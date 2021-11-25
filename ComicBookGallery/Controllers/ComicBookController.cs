@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComicBookGallery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,20 +11,25 @@ namespace ComicBookGallery.Controllers
     {
         public ActionResult Detail()
         {
-
-            ViewBag.SeriesTitle = "Spider Man";
-            ViewBag.IssueNumber = 700;
-            ViewBag.Description = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>";
-            ViewBag.Artist = new string[]
+            var comicBook = new ComicBook()
             {
-                "Script: Dan Slott",
-                "Pencils: Humberto Ramos",
-                "Inks: Victor Olazaba",
-                "Colors: Edgar Delgado",
-                "Letters: Chris Eliopoulos"
+                SeriesTitle = "Spider Man",
+                IssueNumber = 700,
+                DescriptionHtml = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! " +
+                                 "Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
+                Warning = "there is no artist in List",
+                Artists = new Artist[] {
+                    new Artist(){Name = "Den", Role ="Script"},
+                    new Artist(){Name = "Humberto", Role ="Pencils"},
+                    new Artist(){Name = "Edger", Role ="Inks"},
+                    new Artist(){Name = "Colors", Role ="Colors"},
+                    new Artist(){Name = "Letters", Role ="Letters"},
+                }
+
             };
-            ViewBag.Warning = "there is no artist in List";
-            return View();
+
+
+            return View(comicBook);
 
         }
     }
