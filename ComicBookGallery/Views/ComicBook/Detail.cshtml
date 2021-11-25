@@ -2,34 +2,68 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Comic Book Detail";
+    ViewBag.Title = Model.DisplayText;
 
 }
-<h1>@Model.SeriesTitle</h1>
-<h2>@Model.IssueNumber</h2>
-<h5>Description:</h5>
-<p>@Html.Raw(Model.DescriptionHtml) </p>
 
-@if (Model.Artists.Length > 0)
-{
+<h2>@Model.DisplayText</h2>
 
-    <h5>Artists:</h5>
-    <div>
-        <ul>
+<div class="row">
+    <div class="col-md-6">
+        <div class="well">
+            <h5><label>Series Title:</label> @Model.SeriesTitle</h5>
+            <h5><label>Issue #:</label> @Model.IssueNumber</h5>
+            <h5><label>Favorite:</label> @(Model.Favorite ? "Yes" : "No")</h5>
+            <h5>Artists:</h5>
+            <div>
+                <ul>
+                    @if (true)
+                    {
 
-            @foreach (var item in Model.Artists)
-            {
-                <li>  @item.Role: @item.Name  </li>
+                        foreach (var item in Model.Artists)
+                        {
+                            <li>@item.Role: @item.Name</li>
+                        }
 
-            }
+                    }
 
-
-
-        </ul>
+                </ul>
+            </div>
+        </div>
+        <h5>Description</h5>
+        <div>@Html.Raw(Model.DescriptionHtml)</div>
     </div>
-}
-else
-{
-    <div>@Model.Warning</div>
-}
+    <div class="col-md-6">
+        <img src="/Images/@Model.CoverImageFileName"
+             alt="The Amazing Spider-Man #700" class="img-responsive" />
+    </div>
+</div>
+
+@*<h1>@Model.SeriesTitle</h1>
+    <h2>@Model.IssueNumber</h2>
+    <h5>Description:</h5>
+    <p>@Html.Raw(Model.DescriptionHtml) </p>
+
+    @if (Model.Artists.Length > 0)
+    {
+
+        <h5>Artists:</h5>
+        <div>
+            <ul>
+
+                @foreach (var item in Model.Artists)
+                {
+                    <li>  @item.Role: @item.Name  </li>
+
+                }
+
+
+
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div>@Model.Warning</div>
+    }*@
 

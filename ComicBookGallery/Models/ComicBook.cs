@@ -15,7 +15,7 @@ namespace ComicBookGallery.Models
         public bool Favorite { get; set; }
         public string Warning { get; set; }
 
-        public string Display
+        public string DisplayText
         {
             get { return $"{SeriesTitle} #{IssueNumber}"; }
 
@@ -25,8 +25,7 @@ namespace ComicBookGallery.Models
         {
             get
             {
-                return SeriesTitle.Replace(" ", "-")
-                    .ToLower() + "-" + IssueNumber + ".jpg";
+                return SeriesTitle.Replace(" ", "-").ToLower() + "-" + IssueNumber + ".jpg";
             }
         }
 
